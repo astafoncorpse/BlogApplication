@@ -26,7 +26,7 @@ namespace BlogApplication.Data.Repositories
         {
             var entry = _context.Entry(teg);
             if (entry.State == EntityState.Detached)
-                _context.AddAsync(entry);
+                await _context.AddAsync(entry);
 
             await _context.SaveChangesAsync();
         }
