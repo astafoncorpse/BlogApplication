@@ -11,7 +11,6 @@ using BlogApplication.Contracts.Validation.UserValidators;
 using BlogApplication.Data.Context;
 using BlogApplication.Data.Repositories;
 using BlogApplication.Logging.Logger;
-using BlogApplication.Middlewares;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using ILogger = BlogApplication.Logger.Logger.ILogger;
@@ -53,7 +52,7 @@ builder.Services.AddScoped<IValidator<TegRequest>, AddTegRequestValidator>();
 builder.Services.AddScoped<IValidator<EditTegRequest>, EditTegRequestValidator>();
 
 // ��������� �������
-builder.Services.AddSwaggerGen();
+
 builder.Services.AddEndpointsApiExplorer();
 
 // ���� ������������ �� �������� ��������������, �� �������� �������
@@ -74,16 +73,6 @@ builder.Services.AddRazorPages(options => { options.RootDirectory = "/View/Pages
 
 var app = builder.Build();
 
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Error");
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-        options.RoutePrefix = string.Empty;
-    });
-}
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -92,8 +81,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// ��������� ��������
-app.UseMiddleware<LogMiddleware>();
+
 
 app.MapRazorPages();
 
