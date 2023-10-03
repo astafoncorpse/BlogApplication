@@ -56,18 +56,6 @@ builder.Services.AddScoped<IValidator<EditTegRequest>, EditTegRequestValidator>(
 builder.Services.AddEndpointsApiExplorer();
 
 // ���� ������������ �� �������� ��������������, �� �������� �������
-builder.Services.AddAuthentication(options => options.DefaultScheme = "Cookies")
-    .AddCookie("Cookies", options =>
-    {
-        options.Events = new Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationEvents
-        {
-            OnRedirectToLogin = redirectContext =>
-            {
-                redirectContext.HttpContext.Response.StatusCode = 401;
-                return Task.CompletedTask;
-            }
-        };
-    });
 
 builder.Services.AddRazorPages(options => { options.RootDirectory = "/View/Pages"; });
 

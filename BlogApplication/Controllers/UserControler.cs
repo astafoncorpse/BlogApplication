@@ -4,7 +4,6 @@ using BlogApplication.Contracts.Models.Users;
 using BlogApplication.Data.Model.ViewModels;
 using BlogApplication.Data.Queries;
 using BlogApplication.Data.Repositories.Interfaces;
-using BlogApplication.Handlers;
 using BlogApplication.Model;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -15,7 +14,6 @@ using System.Security.Claims;
 
 namespace BlogApplication.Controllers
 {
-    [ExeptionHandler]
     [ApiController]
     [Route("[controller]")]
     public class UserController : Controller

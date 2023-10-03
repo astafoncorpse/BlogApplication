@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using BlogApplication.Handlers;
 using BlogApplication.Model;
 using BlogApplication.Contracts.Models.Users;
 using BlogApplication.Controllers;
@@ -9,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlogApplication.Controllers.ViewControllers
 {
-    [ExeptionHandler]
+  
     [ApiController]
     [Route("[controller]")]
     public class RegistrationController : Controller
