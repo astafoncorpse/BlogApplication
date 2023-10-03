@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using BlogApplication.Data.Repositories.Interfaces;
-
 using BlogApplication.Contracts.Models.Tegs;
 using BlogApplication.Data.Queries;
 using BlogApplication.Data.Repositories;
@@ -76,7 +75,7 @@ namespace BlogApplication.Controllers
 
             var resalt = _mapper.Map<TegRequest, Teg>(request);
 
-            await _teg.CreateTeg(await teg);
+            await _teg.CreateTeg(teg: await teg);
 
             return StatusCode(200, resalt);
         }
@@ -113,9 +112,9 @@ namespace BlogApplication.Controllers
             if (teg == null)
                 return StatusCode(400, "Такой тег не существует");
 
-            //var article = _articl.GetArticleById(Id);
-            //if (article == null)
-            //    return StatusCode(400, "Такой статьи не существует!");
+            var article = _articl.GetArticleById(Id);
+            if (article == null)
+                return StatusCode(400, "Такой статьи не существует!");
 
             var updateTeg = _teg.UpdateTeg(
                 await teg,

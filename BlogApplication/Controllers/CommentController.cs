@@ -122,7 +122,7 @@ namespace BlogApplication.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetCommentById(CommentRequest reqest)
+        public IActionResult GetCommentById(CommentRequest reqest)
         {
             var comment = _comment.GetCommentById(reqest.Id);
             if (comment == null)
